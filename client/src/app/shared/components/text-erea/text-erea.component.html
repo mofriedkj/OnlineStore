@@ -1,0 +1,19 @@
+      <div class="form-group ">
+                
+        <span class="has-float-label">
+            <textarea 
+            [ngClass]="(controldir && controldir.control && controldir.control.touched) ? !controldir.control.valid ? 'is-invalid' : 'is-valid' : null"
+            (input)="onchange($event.target.value)"
+            (blur)="ontouched()"
+            id="{{label}}" 
+            #input
+            class="form-control " 
+            placeholder="{{label}}"
+            rows="4"
+            style="resize: none;"
+            ></textarea>
+            <label for="{{label}}">{{label}} <span class="required">*</span></label>
+            <div class="invalid-feedback" *ngIf="(controldir && controldir.control && !controldir.control.valid && controldir.control.touched)">
+            <span *ngIf="controldir.control.errors?.required">{{label}} is required</span>
+            <span *ngIf="controldir.control.errors?.pattern">Invalid {{label}}</span>
+    </div>

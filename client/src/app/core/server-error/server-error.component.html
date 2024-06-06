@@ -1,0 +1,15 @@
+<div class="container mt-5">
+      <h1 class="text-center text-danger font-weight-bold ">Internal Server Error </h1>
+      <h5 *ngIf="error.message" class="text-danger">Error: {{error.message}}</h5>
+     <div class=" d-flex justify-content-center ">
+         <div class="col-3">
+           <p class="h3">What to do next?</p>
+      <ol>
+          <li>Try Again Later</li>
+          <li>Contact Support</li>
+      </ol>
+  
+         </div>
+               </div>
+           <code class="mt-5" style="background-color: whitesmoke;">{{error._details}}</code>
+  </div> 

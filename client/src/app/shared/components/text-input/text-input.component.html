@@ -1,0 +1,32 @@
+      <div class="form-group ">
+        <span class="has-float-label">
+            <input 
+            [ngClass]="(controldir && controldir.control && controldir.control.touched) ? !controldir.control.valid ? 'is-invalid' : 'is-valid' : null"
+            (input)="onchange($event.target.value)"
+            (blur)="ontouched()"
+            id="{{label}}" 
+            #input
+            class="form-control " 
+            placeholder="{{label}}"
+            type="{{type}}"
+            style="height: 45px"
+            >
+            <div *ngIf="controldir && controldir.control && controldir.control.status === 'PENDING'" class="fa fa-spinner fa-spin loader"></div>
+            <label *ngIf="reqired" for="{{label}}">{{label}} <span  class="required">*</span></label>
+            <label *ngIf="!reqired" for="{{label}}">{{label}} <span  class="text-muted">(optianal)</span></label>
+
+            <div class="invalid-feedback" *ngIf="(controldir && controldir.control && !controldir.control.valid && controldir.control.touched)">
+                <span *ngIf="controldir.control.errors?.minlength">{{label}} Must have {{minlength}} digits</span>
+            <span *ngIf="controldir.control.errors?.required">{{label}} is required</span>
+            <span *ngIf="controldir.control.errors?.pattern">Invalid {{label}}</span>
+
+            </div>
+            <small *ngIf="minlength && !controldir.control.errors.minlength "  class="text-muted">Password must have {{minlength}} digits</small>
+        
+            <div class="invalid-feedback d-block" *ngIf="(controldir && controldir.control && !controldir.control.valid && controldir.control.dirty)">
+                <span *ngIf="controldir.control.errors?.emailexists"> Email address is already use</span>
+            </div>
+
+           
+
+            

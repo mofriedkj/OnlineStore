@@ -1,0 +1,30 @@
+<div  style="margin-top: 40px;" class="d-flex justify-content-center">
+  <div  *ngIf="orders.length === 0">
+        <div  style="font-style: italic; font-weight: bold;" class="h3 text-info text-center ">Sorry: You Dont Have Any Order Now!
+              <a  [routerLink]="['/shop']" routerLinkActive="router-link-active" >Shop Now</a>     
+        </div> </div> </div>
+
+
+<div *ngIf="orders.length > 0 "  class="container"><div class="row">
+        <div class="col-12">
+          <table class="table table-hover" style="cursor: pointer;">
+            <thead class="thead-light">
+            <tr>
+              <th>Order</th>
+              <th>Date</th>
+              <th>Total</th>
+              <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let order of orders" routerLink="/orders/{{order.id}}">
+              <th># {{order.id}}</th>
+              <td>{{order.orderDate | date: 'medium'}}</td>
+              <td>{{order.total | currency}}</td>
+              <td>{{order.status}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div></div>
+  

@@ -1,0 +1,28 @@
+<div  class="about-section">
+  <h1>About Us </h1>
+  <p> <strong>This Website Is A Demo App</strong><br>  And Is Build With Latest Technology,
+
+    <br>We Can Make This Website Ready For Your Buisness,<br>
+     Or We Can Do For You Any Work For Good Prices,<br> Contact For Details</p>
+</div>
+<div class="d-flex justify-content-center mt-5">
+      <div class="col-3">
+        <form [formGroup]="formgroup" >
+          <div class="text-center mb-4">
+            <h1 class="h3 mb-3 font-weight-normal">Contact</h1>
+          </div>
+        <app-text-input formControlName="name" [reqired]="true" [label]="'Name'"></app-text-input>    
+        <app-text-input formControlName="emailAddress" [reqired]="true" [label]="'email address'"></app-text-input>               
+        <app-text-input formControlName="phoneNumber" [reqired]="true" [label]="'Phone Number'" ></app-text-input>   
+        <app-text-erea formControlName="message" [reqired]="true" [label]="'message'"></app-text-erea>            
+        
+          
+          <button (click)="SendContactMessage()" [disabled]="this.formgroup.invalid" class="btn btn-lg btn-primary btn-block" type="submit">
+            Contact
+            <i ng *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+          </button>
+        </form>
+      </div>
+    </div> 
+
+   

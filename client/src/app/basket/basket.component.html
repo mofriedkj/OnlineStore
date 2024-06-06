@@ -1,0 +1,36 @@
+<div class="container mt-2">
+    <div class="d-flex justify-content-center">
+    <div  *ngIf="(basket$ |async) === null">
+          <div style="font-style: italic; padding-top: 100px; font-weight: bold;" class="h3 text-info text-center pt-5 ">Sorry: Your Basket Is Empty!
+                <a class="" [routerLink]="['/shop']" routerLinkActive="router-link-active" >Shop Now</a>     
+          </div> </div> </div>
+      <div *ngIf="(basket$ |async) as items">
+          <div class="pb-5">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-12 py-5 mb-1">
+               <app-order-summary
+               (decerment)="decermentQuantity($event)"
+               (incerment)="incrmentQuantity($event)"
+               (remove)="removeItemFromBasket($event)"
+               [items]="(basket$ | async).basketItems"
+               ></app-order-summary>
+                      </div>
+                  </div>
+  
+                  <div class="row">
+                      <div class="col-6 offset-6">
+                          <app-ordertotal 
+                          [total]="(basketTotals$ | async).TotalPrice"
+                          [subtotal]="(basketTotals$ | async).SubTotal"
+                          [shippingPrice]="(basketTotals$ | async).Shipping"
+                          ></app-ordertotal>
+                          <a routerLink="/checkout" class="btn btn-outline-primary py-2 btn-block">
+                              Proceed to checkout
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div> 
